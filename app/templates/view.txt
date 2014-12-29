@@ -1,0 +1,3 @@
+$PATH$
+
+NOTE: in NPM's scaffold, the edit view is used for creating as well. Please delete create.blade.php

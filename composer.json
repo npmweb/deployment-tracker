@@ -1,0 +1,74 @@
+{
+  "name": "npmweb/laravel-template",
+  "description": "NPM Laravel Template",
+  "repositories": [
+    { "type": "vcs", "url": "git@bitbucket.org:npmweb/chms-models" },
+    { "type": "vcs", "url": "git@bitbucket.org:npmweb/escaping" },
+    { "type": "vcs", "url": "git@bitbucket.org:npmweb/laravel-auth" },
+    { "type": "vcs", "url": "git@bitbucket.org:npmweb/laravel-base" },
+    { "type": "vcs", "url": "git@bitbucket.org:npmweb/middleware-client" },
+    { "type": "vcs", "url": "git@bitbucket.org:npmweb/npm-reference" },
+    { "type": "vcs", "url": "git@github.com:npmweb/client-validation-generator" },
+    { "type": "vcs", "url": "git@github.com:npmweb/laravel-forms" },
+    { "type": "vcs", "url": "git@github.com:npmweb/laravel-health-check" },
+    { "type": "vcs", "url": "git@github.com:npmweb/laravel-test" },
+    { "type": "vcs", "url": "git@github.com:npmweb/laravel-validator-custom-rules" },
+    { "type": "vcs", "url": "git@github.com:npmweb/php-helpers" },
+    { "type": "vcs", "url": "git@github.com:npmweb/php-env-loader" },
+    { "type": "vcs", "url": "git@github.com:npmweb/reference" }
+  ],
+  "require": {
+    "laravel/framework": "4.2.*",
+    "npmweb/client-validation-generator": "dev-master@dev",
+    "npmweb/escaping": "dev-master@dev",
+    "npmweb/laravel-auth": "dev-master@dev",
+    "npmweb/laravel-base": "dev-master@dev",
+    "npmweb/laravel-forms": "dev-master@dev",
+    "npmweb/laravel-health-check": "dev-master@dev",
+    "npmweb/laravel-test": "dev-master@dev",
+    "npmweb/laravel-validator-custom-rules": "dev-master@dev",
+    "npmweb/middleware-client": "dev-master@dev",
+    "npmweb/npm-reference": "dev-master@dev",
+    "npmweb/php-env-loader": "dev-master@dev",
+    "npmweb/php-helpers": "dev-master@dev",
+    "roave/security-advisories": "dev-master@dev"
+  },
+  "require-dev": {
+    "benconstable/phpspec-laravel": "~1.0@dev",
+    "doctrine/dbal": "v2.4.2",
+    "fzaninotto/faker": "1.4.*",
+    "laracasts/testdummy": "1.*",
+    "mockery/mockery": "0.9.*",
+    "phpspec/phpspec": "~2.1@dev",
+    "phpunit/phpunit": "4.2.*",
+    "raveren/kint": "0.9.*",
+    "symfony/yaml": "2.1.*",
+    "way/generators": "~2.0"
+  },
+  "autoload": {
+    "classmap": [
+      "app/database/migrations",
+      "app/database/seeds"
+    ],
+    "psr-4": {
+      "NpmWeb\\DeploymentTracker\\": "app/src/NpmWeb/DeploymentTracker",
+      "NpmWeb\\Tests\\": "app/tests/NpmWeb/Tests"
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "php artisan optimize"
+    ],
+    "post-update-cmd": [
+      "php artisan clear-compiled",
+      "php artisan optimize"
+    ],
+    "post-create-project-cmd": [
+      "php artisan key:generate"
+    ]
+  },
+  "config": {
+    "preferred-install": "dist"
+  },
+  "minimum-stability": "dev"
+}

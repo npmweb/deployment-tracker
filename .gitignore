@@ -1,0 +1,17 @@
+/public/components/
+/workbench/
+/vendor/
+/endpoints/shared/components/
+/.env.backend-local.php
+/.env.frontend-local.php
+/.env.json
+/node_modules/
+/.sass-cache/
+/endpoints/backend/includes/css/
+/endpoints/frontend/includes/css/
+endpoints/shared/bower_components
+endpoints/shared/dist
+endpoints/backend/includes/vendor
+endpoints/frontend/includes/vendor
+endpoints/backend/includes/js/vendor.combined.js
+endpoints/frontend/includes/js/vendor.combined.js

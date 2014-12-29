@@ -1,0 +1,29 @@
+{
+  "name": "laravel-template",
+  "version": "1.0.0",
+  "authors": [
+    "Josh Justice <josh.justice@northpoint.org>"
+  ],
+  "description": "Template for NPM Laravel apps.",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.1.2",
+    "bbGrid": "git@github.com:npmweb/bbgrid#cd62ae128262bdeebe5fcfb42728a9f341875384",
+    "environment-banner": "git@github.com:npmweb/environment-banner#94ae3e77fcbd59e9cf34c7ced4b78e739e4068f7",
+    "escaping-js": "git@bitbucket.org:npmweb/escaping-js#a8294159f326f8c7d5e92f67d3b755594d8dd835",
+    "foundation": "5.3.*",
+    "foundation_calendar_date_time_picker": "git@github.com:npmweb/foundation_calendar_date_time_picker#11253b7a63740f931945679f0682c7bc043d9e25",
+    "jquery-validation-bootstrap": "git@github.com:npmweb/jquery-validation-bootstrap#6749bfcebda68e0215e5fed56bddf843e14c6026",
+    "jquery-validation-foundation": "git@github.com:npmweb/jquery-validation-foundation#cd0444a08e87abb9bedc87ab51632324b51f5873",
+    "jquery-validator-custom-rules": "git@github.com:npmweb/jquery-validator-custom-rules#b52fc52443cfd6b8494c79f5aa341924b7ed5e73",
+    "tinymce": "~4.1.6",
+    "underscore": "~1.5.2"
+  }
+}

@@ -1,0 +1,121 @@
+<?php namespace NpmWeb\DeploymentTracker\Controllers\Backend;
+
+use Input;
+use Redirect;
+use Request;
+use Response;
+use View;
+use NpmWeb\LaravelBase\Controllers\BaseController;
+use NpmWeb\DeploymentTracker\Models\$MODEL$;
+
+class $NAME$ extends BaseController {
+
+    /**
+     * Display a listing of $COLLECTION$
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        if( Request::wantsJson() ) {
+            $$COLLECTION$ = $MODEL$::all();
+            return Response::json([
+                'status' => 'success',
+                '$COLLECTION$' => $$COLLECTION$->toArray(),
+            ]);
+        } else {
+            return View::make('$COLLECTION$.index');
+        }
+    }
+
+    /**
+     * Show the form for creating a new $RESOURCE$
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        $$RESOURCE$ = new $MODEL$;
+        return View::make('$COLLECTION$.edit',compact('$RESOURCE$'));
+    }
+
+    /**
+     * Store a newly created $RESOURCE$ in storage.
+     *
+     * @return Response
+     */
+    public function store()
+    {
+        $$RESOURCE$ = new $MODEL$(Input::all());
+        $$RESOURCE$->save();
+
+        if ($$RESOURCE$->errors()->any())
+        {
+            return Redirect::back()->withErrors($$RESOURCE$->errors())->withInput();
+        }
+
+        return Redirect::route('$COLLECTION$.index')
+            ->with('myflash', 'Your $RESOURCE$ has been created.');
+    }
+
+    /**
+     * Display the specified $RESOURCE$.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        $$RESOURCE$ = $MODEL$::findOrFail($id);
+
+        return View::make('$COLLECTION$.show', compact('$RESOURCE$'));
+    }
+
+    /**
+     * Show the form for editing the specified $RESOURCE$.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        $$RESOURCE$ = $MODEL$::findOrFail($id);
+
+        return View::make('$COLLECTION$.edit', compact('$RESOURCE$'));
+    }
+
+    /**
+     * Update the specified $RESOURCE$ in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function update($id)
+    {
+        $$RESOURCE$ = $MODEL$::findOrFail($id);
+        $$RESOURCE$->update(Input::all());
+
+        if ($$RESOURCE$->errors()->any())
+        {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+
+        return Redirect::route('$COLLECTION$.index')
+            ->with('myflash', 'Your $RESOURCE$ has been updated.');
+    }
+
+    /**
+     * Remove the specified $RESOURCE$ from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        $MODEL$::destroy($id);
+
+        return Redirect::route('$COLLECTION$.index')
+            ->with('myflash', 'Your $RESOURCE$ has been deleted.');
+    }
+
+}

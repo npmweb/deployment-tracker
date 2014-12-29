@@ -1,0 +1,12 @@
+extensions:
+    - PhpSpec\Laravel\Extension\LaravelExtension
+
+suites:
+  app_suite:
+    namespace: NpmWeb\DeploymentTracker
+    src_path: app/src
+    spec_path: app/tests
+    spec_prefix: spec
+
+laravel_extension:
+  testing_environment: 'backend-testing'
