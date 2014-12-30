@@ -14,6 +14,12 @@ class AddEnvironmentIdToServer extends Migration {
     {
         Schema::table('servers', function($table) {
             $table->integer('environment_id')->unsigned();
+        });
+
+        // to prevent key errors
+        DB::update('UPDATE servers SET environment_id = 2');
+
+        Schema::table('servers', function($table) {
             $table->foreign('environment_id')
                 ->references('id')->on('environments');
         });
