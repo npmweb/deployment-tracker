@@ -7,7 +7,6 @@ app.EnvironmentEndpointCollection = Backbone.Collection.extend({
   initialize: function( applicationUid, endpointUid ) {
     this.applicationUid = applicationUid;
     this.endpointUid = endpointUid;
-    this.fetch({reset:true});
   },
   url: function() {
     return app.baseUrl

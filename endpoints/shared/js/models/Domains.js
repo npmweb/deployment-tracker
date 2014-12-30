@@ -7,7 +7,6 @@ app.DomainCollection = Backbone.Collection.extend({
   initialize: function( serverUid, ipAddressUid ) {
     this.serverUid = serverUid;
     this.ipAddressUid = ipAddressUid;
-    this.fetch({reset:true});
   },
   url: function() {
     return app.baseUrl

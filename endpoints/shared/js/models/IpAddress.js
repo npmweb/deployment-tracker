@@ -9,7 +9,6 @@ app.IpAddressCollection = Backbone.Collection.extend({
       this.parse({models:param});
     } else {
       this.serverUid = param;
-      this.fetch({reset:true});
     }
   },
   url: function() {

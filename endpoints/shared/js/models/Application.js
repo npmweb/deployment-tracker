@@ -7,8 +7,6 @@ app.ApplicationCollection = Backbone.Collection.extend({
   initialize: function( param ) {
     if( _.isArray(param) ) {
       this.parse({models:param});
-    } else {
-      this.fetch({reset:true});
     }
   },
   url: function() {
