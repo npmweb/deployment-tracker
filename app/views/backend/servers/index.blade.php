@@ -47,13 +47,13 @@ $(function(){
                 }
             },
             {
-                property: 'hostname',
-                label: 'Hostname',
+                property: 'display_name',
+                label: 'Display Name',
                 defaultSort: 'asc'
             },
             {
-                property: 'display_name',
-                label: 'Display Name'
+                property: 'hostname',
+                label: 'Hostname'
             },
             {
                 property: 'ip_addresses',
