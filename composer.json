@@ -31,7 +31,8 @@
     "npmweb/npm-reference": "dev-master@dev",
     "npmweb/php-env-loader": "dev-master@dev",
     "npmweb/php-helpers": "dev-master@dev",
-    "roave/security-advisories": "dev-master@dev"
+    "roave/security-advisories": "dev-master@dev",
+    "way/generators": "~2.0"
   },
   "require-dev": {
     "benconstable/phpspec-laravel": "~1.0@dev",
@@ -42,8 +43,7 @@
     "phpspec/phpspec": "~2.1@dev",
     "phpunit/phpunit": "4.2.*",
     "raveren/kint": "0.9.*",
-    "symfony/yaml": "2.1.*",
-    "way/generators": "~2.0"
+    "symfony/yaml": "2.1.*"
   },
   "autoload": {
     "classmap": [

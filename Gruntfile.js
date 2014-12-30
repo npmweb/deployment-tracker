@@ -12,7 +12,6 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     paths: {
       shared: 'endpoints/shared',
-      frontend: 'endpoints/frontend',
       backend: 'endpoints/backend',
       sass: 'includes/scss',
       css: 'includes/css',
@@ -26,7 +25,6 @@ module.exports = function(grunt) {
 
     clean: {
       symlink: [
-        '<%= paths.frontend %>/includes/shared',
         '<%= paths.backend %>/includes/shared',
       ],
       sass: [
@@ -36,10 +34,6 @@ module.exports = function(grunt) {
     symlink: {
       includes: {
         files: [
-            {
-              src: '<%= paths.shared %>',
-              dest: '<%= paths.frontend %>/includes/shared'
-            },
             {
               src: '<%= paths.shared %>',
               dest: '<%= paths.backend %>/includes/shared'
@@ -85,14 +79,6 @@ module.exports = function(grunt) {
       }
     },
     shell: {
-      bowerFrontend: {
-        command: 'bower install',
-        options: {
-          execOptions: {
-            cwd: 'endpoints/frontend'
-          }
-        }
-      },
       bowerBackend: {
         command: 'bower install',
         options: {
@@ -126,16 +112,6 @@ module.exports = function(grunt) {
             '<%= paths.backend %>/<%= paths.sass %>/main.scss'
         }
       },
-      frontend: {
-        options: {
-          style: 'compressed',
-          includePaths: ['<%= paths.frontend %>/includes/vendor/foundation/scss']
-        },
-        files: {
-          '<%= paths.frontend %>/<%= paths.css %>/main.css':
-            '<%= paths.frontend %>/<%= paths.sass %>/main.scss'
-        }
-      }
     },
     wiredep: {
       localBackend: {
@@ -146,26 +122,6 @@ module.exports = function(grunt) {
           directory: 'endpoints/backend/includes/vendor',
           bowerJson: require('./endpoints/backend/bower.json'),
           ignorePath: '../../../../../endpoints/backend/',
-          exclude: [
-            /modernizr/,
-          ],
-        },
-        fileTypes: {
-          html: {
-            replace: {
-              js: '<script src="\{\{asset(\'{{filePath}}\')\}\}"></script>',
-            }
-          },
-        }
-      },
-      localFrontend: {
-        src: [
-          'app/views/frontend/layouts/scripts/_local.blade.php'
-        ],
-        options: {
-          directory: 'endpoints/frontend/includes/vendor',
-          bowerJson: require('./endpoints/frontend/bower.json'),
-          ignorePath: '../../../../../endpoints/frontend/',
           exclude: [
             /modernizr/,
           ],
@@ -190,19 +146,6 @@ module.exports = function(grunt) {
             /modernizr/,
           ],
         }
-      },
-      releaseFrontend: {
-        src: [
-          'app/views/frontend/layouts/scripts/_for-usemin.blade.php'
-        ],
-        options: {
-          directory: 'endpoints/frontend/includes/vendor',
-          bowerJson: require('./endpoints/frontend/bower.json'),
-          ignorePath: '../../../../../endpoints/frontend/',
-          exclude: [
-            /modernizr/,
-          ],
-        }
       }
     },
     useminPrepare: {
@@ -210,12 +153,6 @@ module.exports = function(grunt) {
         src: 'app/views/backend/layouts/scripts/_for-usemin.blade.php',
         options: {
           dest: 'endpoints/backend'
-        }
-      },
-      frontend: {
-        src: 'app/views/frontend/layouts/scripts/_for-usemin.blade.php',
-        options: {
-          dest: 'endpoints/frontend'
         }
       },
       options: {
@@ -227,12 +164,6 @@ module.exports = function(grunt) {
             },
             post: {}
           },
-          frontend: {
-            steps: {
-              js: ['concat']
-            },
-            post: {}
-          }
         }
       }
     },
@@ -252,9 +183,7 @@ module.exports = function(grunt) {
       bower: {
         files: ['bower.json'],
         tasks: [
-          'shell:bowerFrontend',
           'shell:bowerBackend',
-          'wiredep:localFrontend',
           'wiredep:localBackend'
         ]
       },
@@ -275,7 +204,6 @@ module.exports = function(grunt) {
       sass: {
         files: [
           '<%= paths.backend %>/<%= paths.sass %>/**/*.scss',
-          '<%= paths.frontend %>/<%= paths.sass %>/**/*.scss'
         ],
         tasks: ['sass','notify:sass']
       }
@@ -328,10 +256,8 @@ module.exports = function(grunt) {
     'composer:install',
     'symlink',
     'chmod',
-    'shell:bowerFrontend',
     'shell:bowerBackend',
     'sass',
-    'wiredep:localFrontend',
     'wiredep:localBackend',
     'shell:migrate',
     'shell:dbseed',
@@ -342,12 +268,9 @@ module.exports = function(grunt) {
     'composer:install',
     'symlink',
     'chmod',
-    'shell:bowerFrontend',
     'shell:bowerBackend',
     'sass',
-    'wiredep:releaseFrontend',
     'wiredep:releaseBackend',
-    'myuseminFrontend',
     'myuseminBackend',
     'shell:migrate',
     'shell:dbseed'
@@ -357,25 +280,15 @@ module.exports = function(grunt) {
     'composer:install:no-dev',
     'symlink',
     'chmod',
-    'shell:bowerFrontend',
     'shell:bowerBackend',
     'sass',
-    'wiredep:releaseFrontend',
     'wiredep:releaseBackend',
-    'myuseminFrontend',
     'myuseminBackend',
     'shell:migrate'
   ]);
   grunt.registerTask('myuseminBackend', [
     'wiredep:releaseBackend',
     'useminPrepare:backend',
-    'concat'
-    // don't call usemin itself because it overwrites the block in the file
-    // we are using Laravel and a hard-coded script tag to handle that
-  ]);
-  grunt.registerTask('myuseminFrontend', [
-    'wiredep:releaseFrontend',
-    'useminPrepare:frontend',
     'concat'
     // don't call usemin itself because it overwrites the block in the file
     // we are using Laravel and a hard-coded script tag to handle that
