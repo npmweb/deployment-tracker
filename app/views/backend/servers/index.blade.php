@@ -40,6 +40,13 @@ $(function(){
                 }
             },
             {
+                property: 'environment',
+                label: 'Environment',
+                render: function(model, view) {
+                    return model.get('environment').name;
+                }
+            },
+            {
                 property: 'hostname',
                 label: 'Hostname',
                 defaultSort: 'asc'

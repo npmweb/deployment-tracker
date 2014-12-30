@@ -20,10 +20,11 @@ class DomainsController extends BaseController {
     public function index( $serverUid, $ipAddressUid )
     {
         $ipAddress = IpAddress::find($ipAddressUid);
+        if( $ipAddress->server->uid != $serverUid ) {
+            return App::abort('404'); // no html view
+        }
+
         if( Request::wantsJson() ) {
-            if( $ipAddress->server->uid != $serverUid ) {
-                return App::abort('404'); // no html view
-            }
 
             $domains = $ipAddress->domains;
             return Response::json([

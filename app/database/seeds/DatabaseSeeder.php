@@ -13,7 +13,12 @@ class DatabaseSeeder extends Seeder {
         DB::statement('SET foreign_key_checks = 0');
         DB::statement('SET UNIQUE_CHECKS=0');
 
-        $tables = ['Servers','IpAddresses','Domains'];
+        $tables = [
+            'Environments',
+            'Servers', 'IpAddresses', 'Domains',
+            'Applications', 'Endpoints',
+            'EnvironmentEndpoints',
+        ];
         foreach( $tables as $table ) {
             $this->call($table.'TableSeeder');
         }

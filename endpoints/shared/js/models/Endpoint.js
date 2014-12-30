@@ -1,22 +1,24 @@
 var app = app || {};
 
-app.Server = Backbone.Model.extend({});
+app.Endpoint = Backbone.Model.extend({});
 
-app.ServerCollection = Backbone.Collection.extend({
-  model: app.Server,
+app.EndpointCollection = Backbone.Collection.extend({
+  model: app.Endpoint,
   initialize: function( param ) {
     if( _.isArray(param) ) {
       this.parse({models:param});
     } else {
+      this.applicationUid = param;
       this.fetch({reset:true});
     }
   },
   url: function() {
     return app.baseUrl
-      + '/servers'
+      + '/applications/' + this.applicationUid
+      + '/endpoints'
       + app.bustCache(false);
   },
   parse: function(response) {
-    return response.servers;
+    return response.endpoints;
   }
 });

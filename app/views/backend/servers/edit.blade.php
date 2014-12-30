@@ -14,6 +14,7 @@
                 {{ Form::model( $server, ['route' => 'servers.store', 'validate'=>true, 'data-abide'=>''])}}
             @endif
 
+                {{ Form::select('environment_id', \NpmWeb\DeploymentTracker\Models\Environment::forDropdownValues(), null, ['errors'=>$errors,'label'=>'Environment'] )}}
                 {{ Form::text('display_name',null,['errors'=>$errors]) }}
                 {{ Form::text('hostname',null,['errors'=>$errors]) }}
 

@@ -1,9 +1,9 @@
 var app = app || {};
 
-app.Server = Backbone.Model.extend({});
+app.Environment = Backbone.Model.extend({});
 
-app.ServerCollection = Backbone.Collection.extend({
-  model: app.Server,
+app.EnvironmentCollection = Backbone.Collection.extend({
+  model: app.Environment,
   initialize: function( param ) {
     if( _.isArray(param) ) {
       this.parse({models:param});
@@ -13,10 +13,10 @@ app.ServerCollection = Backbone.Collection.extend({
   },
   url: function() {
     return app.baseUrl
-      + '/servers'
+      + '/environments'
       + app.bustCache(false);
   },
   parse: function(response) {
-    return response.servers;
+    return response.environments;
   }
 });

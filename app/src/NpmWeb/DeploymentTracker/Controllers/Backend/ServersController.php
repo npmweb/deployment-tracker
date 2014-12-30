@@ -18,7 +18,7 @@ class ServersController extends BaseController {
     public function index()
     {
         if( Request::wantsJson() ) {
-            $servers = Server::all();
+            $servers = Server::with('environment')->get();
             return Response::json([
                 'status' => 'success',
                 'servers' => $servers->toArray(),

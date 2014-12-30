@@ -14,6 +14,7 @@ class ServersTableSeeder extends Seeder {
         foreach(range(1, 10) as $index)
         {
             Server::create([
+                'environment_id' => $faker->numberBetween(1,2),
                 'display_name' => $faker->word,
                 'hostname' => $faker->domainName,
             ]);

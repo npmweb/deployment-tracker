@@ -9,6 +9,12 @@ Route::group(['namespace' => 'NpmWeb\DeploymentTracker\Controllers\Backend'], fu
 
     Route::group(['before'=>['auth']], function() {
         Route::get('/', 'ServersController@index');
+        Route::resource('applications', 'ApplicationsController');
+        Route::resource('applications.endpoints', 'EndpointsController');
+        Route::resource('applications.endpoints.environment_endpoints', 'EnvironmentEndpointsController');
+
+        Route::resource('environments', 'EnvironmentsController');
+
         Route::resource('servers', 'ServersController');
         Route::resource('servers.ip_addresses', 'IpAddressesController');
         Route::resource('servers.ip_addresses.domains', 'DomainsController');
