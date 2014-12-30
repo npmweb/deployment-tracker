@@ -21,7 +21,7 @@ class IpAddressesController extends BaseController {
     {
         $server = Server::find($serverUid);
         if( Request::wantsJson() ) {
-            $ipaddresses = $server->ipAddresses;
+            $ipaddresses = $server->ipAddresses()->with('domains')->get();
             return Response::json([
                 'status' => 'success',
                 'ipaddresses' => $ipaddresses->toArray(),

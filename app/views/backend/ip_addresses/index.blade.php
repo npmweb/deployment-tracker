@@ -56,7 +56,10 @@ $(function(){
                 property: 'domains',
                 label: 'Domains',
                 render: function(model, view) {
-                    return '<a href="'+app.baseUrl+'/servers/'+esc_url(app.serverUid)+'/ip_addresses/'+esc_url(model.get('uid'))+'/domains">Show</a>';
+                    var output = '<a href="'+app.baseUrl+'/servers/'+esc_url(app.serverUid)+'/ip_addresses/'+esc_url(model.get('uid'))+'/domains">Edit</a> - ';
+                    return output + _.map( model.get('domains'), function(domain) {
+                        return domain.name;
+                    }).join(', ');
                 }
             }
         ],
