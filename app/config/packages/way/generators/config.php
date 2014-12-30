@@ -8,19 +8,19 @@ return [
     |--------------------------------------------------------------------------
     |
     */
-    'model_template_path' => '/Users/joshju/apps/laravel-template/app/templates/model.txt',
+    'model_template_path' => app_path('templates/model.txt'),
 
-    'scaffold_model_template_path' => '/Users/joshju/apps/laravel-template/app/templates/scaffolding/model.txt',
+    'scaffold_model_template_path' => app_path('templates/scaffolding/model.txt'),
 
-    'controller_template_path' => '/Users/joshju/apps/laravel-template/app/templates/controller.txt',
+    'controller_template_path' => app_path('templates/controller.txt'),
 
-    'scaffold_controller_template_path' => '/Users/joshju/apps/laravel-template/app/templates/scaffolding/controller.txt',
+    'scaffold_controller_template_path' => app_path('templates/scaffolding/controller.txt'),
 
-    'migration_template_path' => '/Users/joshju/apps/laravel-template/app/templates/migration.txt',
+    'migration_template_path' => app_path('templates/migration.txt'),
 
-    'seed_template_path' => '/Users/joshju/apps/laravel-template/app/templates/seed.txt',
+    'seed_template_path' => app_path('templates/seed.txt'),
 
-    'view_template_path' => '/Users/joshju/apps/laravel-template/app/templates/view.txt',
+    'view_template_path' => app_path('templates/view.txt'),
 
 
     /*
