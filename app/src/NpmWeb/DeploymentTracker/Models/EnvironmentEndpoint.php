@@ -27,4 +27,8 @@ class EnvironmentEndpoint extends BaseModel {
         return $this->belongsTo(Domain::class);
     }
 
+    public function __construct() {
+        $this->path = '/';
+    }
+
 }
