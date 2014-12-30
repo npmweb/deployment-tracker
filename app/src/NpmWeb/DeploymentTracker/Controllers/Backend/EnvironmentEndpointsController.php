@@ -24,7 +24,12 @@ class EnvironmentEndpointsController extends BaseController {
         }
 
         if( Request::wantsJson() ) {
-            $environmentendpoints = $endpoint->environmentEndpoints()->with('environment')->with('domain')->get();
+            $environmentendpoints = $endpoint->environmentEndpoints()
+                ->with('environment')
+                ->with('domain')
+                ->with('domain.ipAddress')
+                ->with('domain.ipAddress.server')
+                ->get();
             return Response::json([
                 'status' => 'success',
                 'environmentendpoints' => $environmentendpoints->toArray(),
