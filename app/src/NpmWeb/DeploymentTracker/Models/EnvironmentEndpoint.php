@@ -29,7 +29,9 @@ class EnvironmentEndpoint extends BaseModel {
 
     public function __construct($attributes = []) {
         parent::__construct($attributes);
-        $this->path = '/';
+        if( !isset($this->path) ) {
+            $this->path = '/';
+        }
     }
 
 }
