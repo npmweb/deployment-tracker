@@ -59,10 +59,14 @@ $(function(){
                 property: 'domain',
                 label: 'Domain',
                 render: function(model, view) {
-                    return model.get('domain').name
-                        + ' ('
-                        + model.get('domain').ip_address.server.display_name
-                        + ')';
+                    return model.get('domain').name;
+                }
+            },
+            {
+                property: 'server',
+                label: 'Server',
+                render: function(model, view) {
+                    return model.get('domain').ip_address.server.display_name;
                 }
             },
             {
